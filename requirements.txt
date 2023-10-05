@@ -156,6 +156,7 @@ pdf2text==1.0.0
 pdfminer==20191125
 pdfminer.six==20221105
 pdfplumber==0.8.0
+pdftotext==2.2.2
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==9.4.0
