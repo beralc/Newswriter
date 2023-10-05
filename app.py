@@ -1,14 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import openai
 import markdown  # Ensure you've imported markdown
-from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.secret_key = "your_secret_key_here"  #©
 # Add the code here
 import os
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///mylocaldb.sqlite')  # the fallback to sqlite is optional
 
-db = SQLAlchemy(app)
 # Initialize OpenAI
 openai.api_key = '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'  # Replace with your OpenAI API Key
 
