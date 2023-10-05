@@ -186,7 +186,6 @@ PyMuPDF==1.21.1
 pyowm==3.3.0
 pypandoc==1.11
 pyparsing==3.0.9
-PyPDF2==3.0.1
 PyPDF4==1.27.0
 pyrsistent==0.19.3
 PySocks==1.7.1
