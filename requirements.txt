@@ -4,3 +4,4 @@ openai
 markdown
 Flask-SQLAlchemy
 gunicorn
+psycopg2>=2.9,<3.0
