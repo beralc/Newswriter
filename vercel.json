@@ -1,23 +1,18 @@
 {
+    "version": 2,
+    "name": "my-app-name",
+    "env": {
+      "SECRET_KEY": "@secret-key",
+      "DATABASE_URL": "@database-url",
+      "OPENAI_API_KEY": "@openai-api-key"
+    },
     "functions": {
-      "api/server.py": {
-        "runtime": "python3.9@0.4.0"
+      "api/*.py": {
+        "runtime": "python3.9"
       }
     },
     "routes": [
-      {
-        "src": "/.*",
-        "dest": "/api/server.py"
-      }
-    ],
-    "builds": [
-      {
-        "src": "/api/server.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "env": {
-      "OPENAI_API_KEY": "@openai_api_key"
-    }
+      { "src": "/(.*)", "dest": "/api/server.py" }
+    ]
   }
   
