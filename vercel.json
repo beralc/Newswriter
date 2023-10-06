@@ -3,7 +3,7 @@
     "name": "my-app-name",
     "env": {
       
-      "DATABASE_URL": "@database-url",
+      
       "OPENAI_API_KEY": "@openai-api-key"
     },
     "functions": {
