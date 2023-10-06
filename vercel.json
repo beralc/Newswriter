@@ -2,7 +2,7 @@
     "version": 2,
     "name": "my-app-name",
     "env": {
-      "SECRET_KEY": "@secret-key",
+      
       "DATABASE_URL": "@database-url",
       "OPENAI_API_KEY": "@openai-api-key"
     },
