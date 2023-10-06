@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import openai
-import markdown  # Ensure you've imported markdown
-app = Flask(__name__)
-app.secret_key = "your_secret_key_here"  #©
-# Add the code here
+import markdown
 import os
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///mylocaldb.sqlite')  # the fallback to sqlite is optional
+from serverless_wsgi import handle_request
 
-# Initialize OpenAI
-openai.api_key = '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'  # Replace with your OpenAI API Key
+app = Flask(__name__)
+
+# Configuration
+app.secret_key = os.environ.get("SECRET_KEY", "your_secret_key_here")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///mylocaldb.sqlite') 
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -37,7 +38,7 @@ def index():
             ]
             
             response = openai.ChatCompletion.create(
-                model="gpt-4",  # Adjust if "gpt-4" is not the correct model name
+                model="gpt-4",  # Assuming GPT-4 is available and the correct model name
                 messages=messages,
                 max_tokens=1000,
                 temperature=0.7
@@ -57,5 +58,6 @@ def index():
 
     return render_template('form.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Handle serverless invocation
+def lambda_handler(event, context):
+    return handle_request(app, event, context)
